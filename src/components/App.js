@@ -1,3 +1,4 @@
+import notes from "../notes"
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
@@ -6,15 +7,21 @@ import { StrictMode } from "react";
 //https://l1pp6.csb.app/
 
 //HINT: You will need to study the classes in teh styles.css file to appy styling.
-const App = ()=>{
-  return(
+const App = () => {
+  return (
     <StrictMode>
 
-    <Header/>
-    <Note/>
-    <Footer/>
+      <Header />
+      {notes.map(note => (
+        <Note
+          key={note.key}
+          title={note.title}
+          content={note.content}
+        />
+      ))}
+      <Footer />
     </StrictMode>
-      );
+  );
 }
 
 export default App;
