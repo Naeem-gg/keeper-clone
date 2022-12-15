@@ -1,15 +1,27 @@
-import React from "react";
+import React,{useState} from "react";
 
-function CreateArea() {
+export default function CreateArea() {
+    const [items,setItems] = useState({
+        title:"",
+        content:""
+    })
+    const handleChange = e =>{
+        const {name,value} = e.target;
+        if(name==="title")
+        {setItems(p=>({...p,title:value}))}
+        else
+        setItems(p=>({...p,content:value}))
+    }
+    const addItem = ()=>{
+        console.log(items);
+    }
   return (
     <div>
       <form onSubmit={e=>{e.preventDefault()}}>
-        <input name="title" placeholder="Title" />
-        <textarea name="content" placeholder="Take a note..." rows="3" />
-        <button>+</button>
+        <input name="title" onChange={handleChange} placeholder="Title" value={items.title} />
+        <textarea name="content" onChange={handleChange} placeholder="Take a note..." rows="3" value={items.content} />
+        <button onClick={addItem}>+</button>
       </form>
     </div>
   );
 }
-
-export default CreateArea;
