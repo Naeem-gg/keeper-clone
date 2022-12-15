@@ -1,27 +1,34 @@
-import notes from "../notes"
+import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
-import { StrictMode } from "react";
-//6. Make sure that the final website is styled like the example shown here:
-//https://l1pp6.csb.app/
+import CreateArea from "./CreateArea";
 
-//HINT: You will need to study the classes in teh styles.css file to appy styling.
-const App = () => {
+function App() {
   return (
-    <StrictMode>
-
+    <div>
       <Header />
-      {notes.map(note => (
-        <Note
-          key={note.key}
-          title={note.title}
-          content={note.content}
-        />
-      ))}
+      <CreateArea />
+      <Note key={1} title="Note title" content="Note content" />
       <Footer />
-    </StrictMode>
+    </div>
   );
 }
 
 export default App;
+
+
+//CHALLENGE:
+//1. Implement the add note functionality.
+//- Create a constant that keeps track of the title and content.
+//- Pass the new note back to the App.
+//- Add new note to an array.
+//- Take array and render seperate Note components for each item.
+
+//2. Implement the delete note functionality.
+//- Callback from the Note component to trigger a delete function.
+//- Use the filter function to filter out the item that needs deletion.
+//- Pass a id over to the Note component, pass it back to the App when deleting.
+
+//This is the end result you're aiming for:
+//https://pogqj.csb.app/

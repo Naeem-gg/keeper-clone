@@ -27,6 +27,11 @@ const notes = [
         key:5,
         title:"Naeem",
         content:"Naeem is learning props and states in React"
+    },
+    {
+      key:6,
+      title:"Naeem another",
+      content:"next is NextJs"
     }
   ];
   export default notes;
