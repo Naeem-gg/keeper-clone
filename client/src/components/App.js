@@ -8,13 +8,14 @@ import CreateArea from "./CreateArea";
 function App() {
   const [itemsArray,setArray] = useState([])
   // const uniqueKey = uuidv4();
-  const addItem = (items)=>{
+  const addItem = (items,setItems)=>{
     setArray((p)=>{
       if(items.title!=="" && items.content!=="")
       return ([...p,items])
       else
       return console.error("prevented from entering empty title and content")
     })
+    setItems({title:"",content:""});
 }
 const delItem = (index) =>{
   setArray((p)=>{        //currentElement,it's index
