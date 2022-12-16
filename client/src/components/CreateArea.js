@@ -1,5 +1,4 @@
 import React,{useState} from "react";
-
 export default function CreateArea(props) {
     const [items,setItems] = useState({
         title:"",
@@ -7,14 +6,8 @@ export default function CreateArea(props) {
     })
     const handleChange = e =>{
         const {name,value} = e.target;
-        if(name==="title")
-        {setItems(p=>({...p,title:value}))}
-        else
-        setItems(p=>({...p,content:value}))
+        setItems(p=>({...p,[name]:value}));
     }
-    // const addItem = ()=>{
-    //     console.log(items);
-    // }
   return (
     <div>
       <form onSubmit={e=>{e.preventDefault()}}>

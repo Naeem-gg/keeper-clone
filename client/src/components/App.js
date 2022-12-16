@@ -3,11 +3,12 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
+// import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const [itemsArray,setArray] = useState([])
+  // const uniqueKey = uuidv4();
   const addItem = (items)=>{
-    console.log(items);
     setArray((p)=>{
       if(items.title!=="" && items.content!=="")
       return ([...p,items])
