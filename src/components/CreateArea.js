@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 
-export default function CreateArea() {
+export default function CreateArea(props) {
     const [items,setItems] = useState({
         title:"",
         content:""
@@ -12,15 +12,15 @@ export default function CreateArea() {
         else
         setItems(p=>({...p,content:value}))
     }
-    const addItem = ()=>{
-        console.log(items);
-    }
+    // const addItem = ()=>{
+    //     console.log(items);
+    // }
   return (
     <div>
       <form onSubmit={e=>{e.preventDefault()}}>
         <input name="title" onChange={handleChange} placeholder="Title" value={items.title} />
         <textarea name="content" onChange={handleChange} placeholder="Take a note..." rows="3" value={items.content} />
-        <button onClick={addItem}>+</button>
+        <button onClick={()=>{props.addItem(items)}}>+</button>
       </form>
     </div>
   );

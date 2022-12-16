@@ -1,15 +1,36 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
 
 function App() {
+  const [itemsArray,setArray] = useState([])
+  const addItem = (items)=>{
+    console.log(items);
+    setArray((p)=>{
+      if(items.title!=="" && items.content!=="")
+      return ([...p,items])
+      else
+      return console.error("prevented from entering empty title and content")
+    })
+}
+const delItem = (index) =>{
+  setArray((p)=>{        //currentElement,it's index
+    return itemsArray.filter((element,ind)=>{
+      
+        return ind!==index;
+    })
+  })
+}
   return (
     <div>
       <Header />
-      <CreateArea />
-      <Note key={1} title="Note title" content="Note content" />
+      <CreateArea addItem={addItem}/>
+      {itemsArray.map((singleNote,index)=>{
+
+      return<Note key={index} index={index} title={singleNote.title} content={singleNote.content} delItem={delItem}/>
+      })}
       <Footer />
     </div>
   );
